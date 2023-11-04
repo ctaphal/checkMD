@@ -18,19 +18,21 @@ import numpy as np
 
 import streamlit as st
 from streamlit.hello.utils import show_code
-
-import streamlit as st
 from datetime import datetime as dt
+from storage import allergies_list
+from storage import medical_hist
+from storage import meds_list
+from storage import surgical_site
+from storage import blood_type
 
-
-# some of this file's code is from another source (Google how to make a checklist using Streamlit to try to find the source)
-
-pre_op_checks = ["Correct Patient?", "Reviewed patient's medical history?", "Reviewed patient's medications?", "Reviewed patient's most recent test results?", "Received patient consent documentation?", "Confirmed patient was NPO as appropriate?", "Confirmed correct surgical site?", "Had someone else confirm correct surgical site?", "Checked availability of suitable blood products?", "Sterile practice observed?", "\"Time-out\" completed?", "Documented plan?"]
-
-def listTasks():
+def checklist():
+    pre_op_checks = ["Correct Patient?", "Reviewed patient's medical history?", "Reviewed patient's medications?", "Reviewed patient's most recent test results?", "Received patient consent documentation?", "Confirmed patient was NPO as appropriate?", "Confirmed correct surgical site?", "Had someone else confirm correct surgical site?", "Checked availability of suitable blood products?", "Sterile practice observed?", "\"Time-out\" completed?", "Documented plan?"]
     st.markdown("")
-    st.subheader("Pre-Op Checklist: ")
+    st.subheader("Checklist: ")
     for check in pre_op_checks:
         st.checkbox(check)
 
-listTasks()
+
+st.title("Pre-Op Checks")
+checklist()
+
