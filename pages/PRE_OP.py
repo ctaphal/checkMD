@@ -21,11 +21,11 @@ from streamlit.hello.utils import show_code
 
 import streamlit as st
 from datetime import datetime as dt
-from storage import tools_list
+
 
 # some of this file's code is from another source (Google how to make a checklist using Streamlit to try to find the source)
 
-pre_op_checks = ["Correct Patient?", "Reviewed patient's medical history?", "Reviewed patient's medications?", "Reviewed patient's most recent test results?", "Received patient consent documentation?", "Confirmed patient was NPO as appropriate?", "Confirmed correct surgical site?", "Had someone else confirm correct surgical site?", "Checked availability of suitable blood products?", "Sterile practice observed?", "'Time-out' completed?", "Documented plan?"]
+pre_op_checks = ["Correct Patient?", "Reviewed patient's medical history?", "Reviewed patient's medications?", "Reviewed patient's most recent test results?", "Received patient consent documentation?", "Confirmed patient was NPO as appropriate?", "Confirmed correct surgical site?", "Had someone else confirm correct surgical site?", "Checked availability of suitable blood products?", "Sterile practice observed?", "\"Time-out\" completed?", "Documented plan?"]
 
 def listTasks():
     st.markdown("")

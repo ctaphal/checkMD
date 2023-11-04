@@ -1,1 +1,6 @@
-tools_list=[]
+or_items=[]
+allergies_list = []
+medical_hist = []
+meds_list = []
+surgical_site = []
+blood_type = []
