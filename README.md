@@ -1,7 +1,10 @@
-# Welcome to streamlit
+# Welcome to checkMD, a tool to aid in minimizing physician errors!
 
-This is the app you get when you run `streamlit hello`, extracted as its own app.
 
-Edit [Hello.py](./Hello.py) to customize this app to your heart's desire. ❤️
+Sources referenced for this project: 
+https://discuss.streamlit.io/t/how-to-get-multiple-inputs-using-same-text-input-box/28435/2
+ChatGPT
 
-Check it out on [Streamlit Community Cloud](https://st-hello-app.streamlit.app/)
+Technologies used:
+Streamlit
+GitHub
