@@ -1,6 +1,6 @@
 # Welcome to checkMD, a tool to aid in minimizing physician errors!
 
-Team Name: 
+Team Name: CheckMD
 
 Collaborators: Sriya Chinthalapudi, Gabriela Angarita, Jasmina Abdullaeva
 
