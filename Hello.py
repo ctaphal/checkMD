@@ -24,7 +24,7 @@ def run():
     )
 
     # Use st.markdown with HTML to make the text "CheckMD" bold and bigger
-    st.markdown("""<h1 style = "font-family:new roman"><b>checkMD</b></h1>""", unsafe_allow_html=True)
+    st.markdown("""<h1 style = "font-family:new roman; color:white"><b>checkMD</b></h1>""", unsafe_allow_html=True)
 
     st.markdown(
     """
@@ -36,3 +36,22 @@ def run():
 
 if __name__ == "__main__":
     run()
+
+custom_styles = """
+    body {
+        background-color: #3498db;
+        font-family: "Times New Roman", Times, serif;
+    }
+
+    h1 {
+        color: #89CFF0;
+        font-family: "Times New Roman", Times, serif;
+    }
+
+    p {
+        font-size: 16px;
+    }
+"""
+
+st.markdown(f"<style>{custom_styles}</style>", unsafe_allow_html = True)
+
