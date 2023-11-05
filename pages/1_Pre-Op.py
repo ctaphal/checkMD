@@ -31,8 +31,177 @@ def checklist():
     st.subheader("Checklist: ")
     for check in pre_op_checks:
         st.checkbox(check)
+    st.markdown("\n\n\n\n")
 
+
+## Allergies Check
+def listAllergies():
+    if "mytsks" not in st.session_state:
+        st.session_state.mytsks = []
+
+    if "tskclk" not in st.session_state:
+        st.session_state.tskclk = []
+
+    if "chkarr" not in st.session_state:
+        st.session_state.chkarr = []
+
+    if "rerun" not in st.session_state:
+        st.session_state.rerun = False
+
+    st.subheader("Patient's Allergies: ")
+    if st.session_state.rerun == True:
+        st.session_state.rerun = False
+        st.experimental_rerun()
+
+    else:
+        allg = st.text_input("Enter patient's allergies (one at a time) or enter NONE if none: ", value="")
+        if st.button('Add Allergy'):
+            if allg != "":
+                allergies_list.append(allg)
+                st.session_state.mytsks.append(allg)
+                st.session_state.chkarr.append(False)
+    st.session_state.tskclk = []
+
+    st.markdown("")
+    for allergy in allergies_list:
+        st.markdown(f"- **{allergy}**")
+    st.markdown("\n\n\n\n")
+    st.session_state.rerun = False
+
+def listMedHx():
+    if "mytsks" not in st.session_state:
+        st.session_state.mytsks = []
+
+    if "tskclk" not in st.session_state:
+        st.session_state.tskclk = []
+
+    if "chkarr" not in st.session_state:
+        st.session_state.chkarr = []
+
+    if "rerun" not in st.session_state:
+        st.session_state.rerun = False
+
+    st.subheader("Patient's Medical History: ")
+    if st.session_state.rerun == True:
+        st.session_state.rerun = False
+        st.experimental_rerun()
+
+    else:
+        cond = st.text_input("Enter patient's medical conditions (one at a time) or enter NONE if none: ", value="")
+        if st.button('Add Condition'):
+            if cond != "":
+                medical_hist.append(cond)
+                st.session_state.mytsks.append(cond)
+                st.session_state.chkarr.append(False)
+    st.session_state.tskclk = []
+
+    st.markdown("")
+    for condition in medical_hist:
+        st.markdown(f"- **{condition}**")
+    st.markdown("\n\n\n\n")
+
+
+def listMeds():
+    if "mymeds1" not in st.session_state:
+        st.session_state.mymeds1 = []
+
+    if "mymeds2" not in st.session_state:
+        st.session_state.mymeds2 = []
+
+    if "mymeds3" not in st.session_state:
+        st.session_state.mymeds3 = []
+
+    if "mymeds4" not in st.session_state:
+        st.session_state.mymeds4 = False
+
+    st.subheader("Patient's Medications: ")
+    if st.session_state.mymeds4 == True:
+        st.session_state.mymeds4 = False
+        st.experimental_rerun()
+
+    else:
+        med = st.text_input("Enter patient's medications (one at a time) or enter NONE if none: ", value="")
+        if st.button('Add Medication'):
+            if med != "":
+                meds_list.append(med)
+                st.session_state.mymeds1.append(med)
+                st.session_state.mymeds3.append(False)
+    st.session_state.mymeds2 = []
+
+    st.markdown("")
+    for medication in meds_list:
+        st.markdown(f"- **{medication}**")
+    st.markdown("\n\n\n\n")
+
+
+def listSurgicalSites():
+    if "mytsks" not in st.session_state:
+        st.session_state.mytsks = []
+
+    if "tskclk" not in st.session_state:
+        st.session_state.tskclk = []
+
+    if "chkarr" not in st.session_state:
+        st.session_state.chkarr = []
+
+    if "rerun" not in st.session_state:
+        st.session_state.rerun = False
+
+    st.subheader("Surgical Site(s): ")
+    if st.session_state.rerun == True:
+        st.session_state.rerun = False
+        st.experimental_rerun()
+
+    else:
+        site = st.text_input("Enter patient's surgical site(s): ", value="")
+        if st.button('Add Surgical Site'):
+            if site != "":
+                surgical_site.append(site)
+                st.session_state.mytsks.append(site)
+                st.session_state.chkarr.append(False)
+    st.session_state.tskclk = []
+
+    st.markdown("")
+    for s_site in surgical_site:
+        st.markdown(f"- **{s_site}**")
+    st.markdown("\n\n\n\n")
+
+
+def listBloodType():
+    if "mytsks" not in st.session_state:
+        st.session_state.mytsks = []
+
+    if "tskclk" not in st.session_state:
+        st.session_state.tskclk = []
+
+    if "chkarr" not in st.session_state:
+        st.session_state.chkarr = []
+
+    if "rerun" not in st.session_state:
+        st.session_state.rerun = False
+
+    st.subheader("Patient's Blood Type: ")
+    if st.session_state.rerun == True:
+        st.session_state.rerun = False
+        st.experimental_rerun()
+
+    else:
+        type = st.text_input("Enter patient's blood type: ", value="")
+        if st.button('Add Blood Type'):
+            if type != "":
+                blood_type.append(type)
+                st.session_state.mytsks.append(type)
+                st.session_state.chkarr.append(False)
+    st.session_state.tskclk = []
+    st.markdown("")
+    if (len(blood_type)!=0):
+        st.markdown(f"- **{blood_type[len(blood_type)-1]}**")
+    st.markdown("\n\n\n\n")
 
 st.title("Pre-Op Checks")
 checklist()
-
+listAllergies()
+listMedHx()
+listMeds()
+listSurgicalSites()
+listBloodType()

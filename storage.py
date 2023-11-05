@@ -1,4 +1,5 @@
-or_items=[]
+pre_op_items = []
+post_op_items = []
 allergies_list = []
 medical_hist = []
 meds_list = []
