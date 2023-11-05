@@ -52,4 +52,26 @@ st.markdown("# OR Display")
 st.sidebar.header("")
 st.markdown("*Most critical patient info to display on an OR TV screen*")
 
+custom_styles = """
+    body {
+        font-family: "Times New Roman", Times, serif;
+        color: #000;
+        font-size: 16px;
+    }
+    h1 {
+        color: #89CFF0;
+        font-family: "Times New Roman", Times, serif;
+    }
+    h3 {
+        color: #89CFF0;
+        font-family: "Times New Roman", Times, serif;
+    }
+    p {
+        font-size: 16px;
+        font-family: "Times New Roman", Times, serif;
+    }
+"""
+
+st.markdown(f"<style>{custom_styles}</style>", unsafe_allow_html=True)
+
 surgery_data_display()
