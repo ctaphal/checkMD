@@ -24,7 +24,7 @@ def run():
     )
 
     # Use st.markdown with HTML to make the text "CheckMD" bold and bigger
-    st.markdown("""<h1 style = "font-family:new roman; color:white"><b>checkMD</b></h1>""", unsafe_allow_html=True)
+    st.markdown("""<h1 style = "font-family:new roman;"><b>CheckMD</b></h1>""", unsafe_allow_html=True)
 
     st.markdown(
     """
