@@ -25,7 +25,7 @@ def run():
     )
 
     # Use st.markdown with HTML to make the text "CheckMD" bold and bigger
-    st.markdown("""<h1 style = "font-family:new roman;"><b>CheckMD</b></h1>""", unsafe_allow_html=True)
+    st.markdown("""<h1 style = "font-family:new roman;"><b>👩‍⚕️CheckMD</b></h1>""", unsafe_allow_html=True)
 
     st.markdown(
     """
@@ -56,3 +56,7 @@ custom_styles = """
 
 st.markdown(f"<style>{custom_styles}</style>", unsafe_allow_html = True)
 
+st.markdown(f"- Refreshes surgeons on the **most critical patient/surgery info**")
+st.markdown(f"- Keeps **track of surgical items** in the OR")
+st.markdown(f"- Provides a **display page for OR TVs** containing the most critical patient info to monitor during the surgery")
+st.markdown(f"- Keeps **surgeons accountable** for all of these checks via a surgery data download page which records the patient safety measures taken during the operation")
