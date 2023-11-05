@@ -1,5 +1,8 @@
 # Welcome to checkMD, a tool to aid in minimizing physician errors!
 
+Team Name: 
+
+Collaborators: Sriya Chinthalapudi, Gabriela Angarita, Jasmina Abdullaeva
 
 Sources referenced for this project: 
 ChatGPT
