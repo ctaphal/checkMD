@@ -14,6 +14,7 @@
 
 import streamlit as st
 from streamlit.logger import get_logger
+import emoji
 
 LOGGER = get_logger(__name__)
 
@@ -23,11 +24,11 @@ def run():
     )
 
     # Use st.markdown with HTML to make the text "CheckMD" bold and bigger
-    st.markdown("<h1><b>CheckMD</b></h1>", unsafe_allow_html=True)
+    st.markdown("""<h1 style = "font-family:new roman"><b>checkMD</b></h1>""", unsafe_allow_html=True)
 
     st.markdown(
     """
-    <em>Patient Safety Technology to Prevent Errors In the Operating Room</em>
+    <em style = "font-size:15px">Patient Safety Technology to Prevent Errors In the Operating Room</em>
     """,
     unsafe_allow_html=True
 )
