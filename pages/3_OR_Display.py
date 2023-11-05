@@ -26,25 +26,31 @@ from storage import surgical_site
 from storage import blood_type
 
 def surgery_data_display():
+        st.markdown("""---""")
         st.subheader("Allergies")
-        allg_df = pd.DataFrame(allergies_list, columns=["Allergies"])
-        st.dataframe(allg_df)
+        for allergy in allergies_list:
+            st.markdown(f"- **{allergy}**")
+        st.markdown("""---""")
 
         st.subheader("Medical History")
-        medHx_df = pd.DataFrame(medical_hist, columns=["Medical History"])
-        st.dataframe(medHx_df)
+        for condition in medical_hist:
+            st.markdown(f"- **{condition}**")
+        st.markdown("""---""")
 
         st.subheader("Medications")
-        meds_df = pd.DataFrame(meds_list, columns=["Medications"])
-        st.dataframe(meds_df)
+        for med in meds_list:
+            st.markdown(f"- **{med}**")
+        st.markdown("""---""")
 
         st.subheader("Surgical Site(s)")
-        ssite_df = pd.DataFrame(surgical_site, columns=["Surgical Site(s)"])
-        st.dataframe(ssite_df)
-        
+        for site in surgical_site:
+            st.markdown(f"- **{site}**")
+        st.markdown("""---""")
+
         st.subheader("Blood Type")
-        bt_df = pd.DataFrame(blood_type, columns=["Blood Type"])
-        st.dataframe(bt_df)
+        if len(blood_type)!=0:
+            st.markdown(f"- **{blood_type[len(blood_type)-1]}**")
+        st.markdown("""---""")
 
 
 st.set_page_config(page_title="OR Display")
