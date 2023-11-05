@@ -211,6 +211,8 @@ def listBloodType():
     st.markdown("\n\n\n\n")
 
 st.title("Pre-Op Checks")
+st.markdown("*Confirm the following immediately prior to surgery*")
+
 checklist()
 listAllergies()
 listMedHx()

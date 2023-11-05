@@ -56,6 +56,7 @@ def listTasks():
                 post_op_items.remove(or_item)     
             
 st.title("OR Surgical Tool Tracker")
+st.markdown("*Complete the following checks as appropriate to ensure all surgical tools are accounted for*")
 
 if st.session_state.rerun == True:
     st.session_state.rerun = False

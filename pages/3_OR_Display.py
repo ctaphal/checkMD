@@ -47,8 +47,9 @@ def surgery_data_display():
         st.dataframe(bt_df)
 
 
-st.set_page_config(page_title="Quick Facts Display", page_icon="🖥️")
-st.markdown("# Quick Facts Display")
+st.set_page_config(page_title="OR Display")
+st.markdown("# OR Display")
 st.sidebar.header("")
+st.markdown("*Most critical patient info to display on an OR TV screen*")
 
 surgery_data_display()
