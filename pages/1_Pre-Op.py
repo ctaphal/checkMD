@@ -24,15 +24,22 @@ from storage import medical_hist
 from storage import meds_list
 from storage import surgical_site
 from storage import blood_type
+from storage import pre_op_checklist
 
 def checklist():
     pre_op_checks = ["Correct Patient?", "Reviewed patient's medical history?", "Reviewed patient's medications?", "Reviewed patient's most recent test results?", "Received patient consent documentation?", "Confirmed patient was NPO as appropriate?", "Confirmed correct surgical site?", "Had someone else confirm correct surgical site?", "Checked availability of suitable blood products?", "Sterile practice observed?", "\"Time-out\" completed?", "Documented plan?"]
     st.markdown("")
     st.subheader("Checklist: ")
-    for check in pre_op_checks:
-        st.checkbox(check)
-    st.markdown("\n\n\n\n")
 
+    for check in pre_op_checks:
+        if st.checkbox(check):
+            if check not in pre_op_checklist:
+                pre_op_checklist.append(check) 
+        else:
+            if check in pre_op_checklist: 
+                pre_op_checklist.remove(check)  
+    st.markdown("\n\n\n\n")
+         
 
 ## Allergies Check
 def listAllergies():
