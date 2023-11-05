@@ -21,7 +21,7 @@ LOGGER = get_logger(__name__)
 def run():
     st.set_page_config(
         page_title="CheckMD",
-        
+        page_icon="👩‍⚕️"
     )
 
     # Use st.markdown with HTML to make the text "CheckMD" bold and bigger
