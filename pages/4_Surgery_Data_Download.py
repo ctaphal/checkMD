@@ -21,94 +21,127 @@ import pandas as pd
 import io
 import xlsxwriter
 
+from storage import pre_op_items
+from storage import post_op_items
+from storage import pre_op_checklist
+from storage import pre_op_not_checked
 from storage import allergies_list
 from storage import medical_hist
 from storage import meds_list
 from storage import surgical_site
 from storage import blood_type
 
-def data_frame_demo():
+def surgery_data_download():
+        st.subheader("Items Brought Into OR")
+        preItems_df = pd.DataFrame(pre_op_items, columns=["OR Items: Pre-Op"])
+        st.dataframe(preItems_df)
+        
+        st.subheader("Items Accounted for Post-Op")
+        postItems_df = pd.DataFrame(post_op_items, columns=["OR Items: Post-Op"])
+        st.dataframe(postItems_df)
+
+        st.subheader("Checked Pre-Op")
+        preChecked_df = pd.DataFrame(pre_op_checklist, columns=["Checked Pre-Op"])
+        st.dataframe(preChecked_df)
+        
+        st.subheader("Not Checked Pre-Op")
+        preNotChecked_df = pd.DataFrame(pre_op_not_checked, columns=["Not Checked Pre-Op"])
+        st.dataframe(preNotChecked_df)
+
         st.subheader("Allergies")
-        allg_df = pd.DataFrame(allergies_list, columns="Allergies")
+        allg_df = pd.DataFrame(allergies_list, columns=["Allergies"])
         st.dataframe(allg_df)
 
         st.subheader("Medical History")
-        medHx_df = pd.DataFrame(medical_hist, columns="Medical History")
+        medHx_df = pd.DataFrame(medical_hist, columns=["Medical History"])
         st.dataframe(medHx_df)
 
         st.subheader("Medications")
-        meds_df = pd.DataFrame(meds_list, columns="Medications")
+        meds_df = pd.DataFrame(meds_list, columns=["Medications"])
         st.dataframe(meds_df)
 
         st.subheader("Surgical Site(s)")
-        ssite_df = pd.DataFrame(surgical_site, columns="Surgical Site(s)")
+        ssite_df = pd.DataFrame(surgical_site, columns=["Surgical Site(s)"])
         st.dataframe(ssite_df)
         
         st.subheader("Blood Type")
-        bt_df = pd.DataFrame(blood_type, columns="Blood Type")
+        bt_df = pd.DataFrame(blood_type, columns=["Blood Type"])
         st.dataframe(bt_df)
 
-        save_to_Excel(allg_df, medHx_df, meds_df, ssite_df, bt_df)
+        save_to_Excel(preItems_df, postItems_df, preChecked_df, preNotChecked_df, allg_df, medHx_df, meds_df, ssite_df, bt_df)
 
-def save_to_Excel(allg_df, medHx_df, meds_df, ssite_df, bt_df):
+def save_to_Excel(preItems_df, postItems_df, preChecked_df, preNotChecked_df, allg_df, medHx_df, meds_df, ssite_df, bt_df):
     # Write files to in-memory strings using BytesIO
     # See: https://xlsxwriter.readthedocs.io/workbook.html?highlight=BytesIO#constructor
     output = io.BytesIO()
     workbook = xlsxwriter.Workbook(output, {'in_memory': True})
     worksheet = workbook.add_worksheet("OR Surgery Record")
 
-    if pt_info!=[]:
-        worksheet.write('A1', "Pt Info")
-        for i in range(0, len(pt_cols)):
-            cell = 'A'+str(i+2)
-            worksheet.write(cell, str(pt_cols[i]))
-        for i in range(0, len(pt_info[0])):
+    if pre_op_items!=[]:
+        for i in range(0, len(pre_op_items)):
+            worksheet.write('B1', "Pre-Op Items (brought into OR)")
             cell = 'B'+str(i+2)
-            worksheet.write(cell, str(pt_info[0][i]))
+            worksheet.write(cell, str(pre_op_items[i]))
 
-    if diagnoses_store!={}:
-        worksheet.write('D1', "Diagnoses")
-        worksheet.write('E1', "Notes")
-        count = 0
-        for diag in (diag_keys):
-            cell = 'D'+str(count+2)
-            worksheet.write(cell, str(diag))
-            count = count+1
-        count = 0
-        for val in (diag_vals):
-            cell = 'E'+str(count+2)
-            worksheet.write(cell, str(val))
-            count = count+1
+    if post_op_items!=[]:
+        for i in range(0, len(post_op_items)):
+            worksheet.write('C1', "Post-Op Accounted Items")
+            cell = 'C'+str(i+2)
+            worksheet.write(cell, str(post_op_items[i]))
 
-    if meds_store!=[]:
-        for i in range(0, len(meds_store)):
-            worksheet.write('G1', "Meds")
+    if pre_op_checklist!=[]:
+        for i in range(0, len(pre_op_checklist)):
+            worksheet.write('D1', "Checked Pre-Op")
+            cell = 'D'+str(i+2)
+            worksheet.write(cell, str(pre_op_checklist[i]))
+
+    if pre_op_not_checked!=[]:
+        for i in range(0, len(pre_op_not_checked)):
+            worksheet.write('E1', "Not Checked Pre-Op")
+            cell = 'E'+str(i+2)
+            worksheet.write(cell, str(pre_op_not_checked[i]))
+    
+    if allergies_list!=[]:
+        for i in range(0, len(allergies_list)):
+            worksheet.write('F1', "Allergies Noted")
+            cell = 'F'+str(i+2)
+            worksheet.write(cell, str(allergies_list[i]))
+
+    if medical_hist!=[]:
+        for i in range(0, len(medical_hist)):
+            worksheet.write('G1', "Noted Medical Conditions")
             cell = 'G'+str(i+2)
-            worksheet.write(cell, str(meds_store[i]))
+            worksheet.write(cell, str(medical_hist[i]))
+    
+    if meds_list!=[]:
+        for i in range(0, len(meds_list)):
+            worksheet.write('H1', "Noted Medications")
+            cell = 'H'+str(i+2)
+            worksheet.write(cell, str(meds_list[i]))
 
-    if vitals_store!=[]:
-        worksheet.write('I1', "Vitals")
-        for i in range(0, len(vitals_cols)):
+    if surgical_site!=[]:
+        for i in range(0, len(surgical_site)):
+            worksheet.write('I1', "Noted Surgical Site(s)")
             cell = 'I'+str(i+2)
-            worksheet.write(cell, str(vitals_cols[i]))
+            worksheet.write(cell, str(surgical_site[i]))
 
-        asc = 74
-        for i in range(0, len(vitals_store)):
-            for j in range(0, len(vitals_store[0])):
-                cell = str(chr(asc)+str(j+2))
-                worksheet.write(cell, str(vitals_store[i][j]))
-            asc = asc+1
+    if blood_type!=[]:
+        for i in range(0, len(blood_type)):
+            worksheet.write('J1', "Blood Type (w/ Update History)")
+            cell = 'J'+str(i+2)
+            worksheet.write(cell, str(blood_type[i]))
+
 
     workbook.close()
     st.download_button(
         label="Download as Excel Sheet",
         data=output.getvalue(),
-        file_name="DowntimeProRecord.xlsx",
+        file_name="SurgeryRecord.xlsx",
         mime="application/vnd.ms-excel"
     )   
 
-st.set_page_config(page_title="EHR Data Transfer", page_icon="🖥️")
-st.markdown("# EHR Data Transfer")
+st.set_page_config(page_title="Surgery Data Download", page_icon="🖥️")
+st.markdown("# Surgery Data Download")
 st.sidebar.header("")
 
-data_frame_demo()
+surgery_data_download()
