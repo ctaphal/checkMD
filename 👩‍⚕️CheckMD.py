@@ -24,6 +24,17 @@ def run():
         page_icon="👩‍⚕️"
     )
 
+
+    col1, col2 = st.columns([1, 2])
+
+    # Add text to the first column
+    with col1:
+        st.markdown("""<h1><b>CheckMD</b></h1>""", unsafe_allow_html=True)
+    # Add an image to the second column
+    with col2:
+        st.image("checkMDLogo.png", use_column_width=False, width=85)
+
+
     # Use st.markdown with HTML to make the text "CheckMD" bold and bigger
     st.markdown("""<h1 style = "font-family:new roman;"><b>👩‍⚕️CheckMD</b></h1>""", unsafe_allow_html=True)
 

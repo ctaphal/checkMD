@@ -8,6 +8,7 @@ Technologies used:
 Streamlit
 GitHub
 BingChat AI Image Generation
+Microsoft Excel
 
 Referenced code from: 
 https://discuss.streamlit.io/t/how-to-get-multiple-inputs-using-same-text-input-box/28435/2
