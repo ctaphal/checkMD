@@ -21,7 +21,8 @@ from streamlit.hello.utils import show_code
 
 import streamlit as st
 from datetime import datetime as dt
-from storage import or_items
+from storage import pre_op_items
+from storage import post_op_items
 
 if "mytsks" not in st.session_state:
     st.session_state.mytsks = []
@@ -44,22 +45,28 @@ def cmpltTask(or_item):
 def listTasks():
     st.session_state.tskclk = []
     st.markdown("")
-    st.subheader("OR Items: ")
+    st.subheader("Post-Op: ")
     st.caption("*Check off each item after it's been accounted for post-op*")
-    for or_item in or_items:
-        st.checkbox(f"- **{or_item}**")
-
-st.title("Post-Op Surgical Tool Tracker")
+    for or_item in pre_op_items:
+        if st.checkbox(f"- **{or_item}**"):
+            if or_item not in post_op_items:
+                post_op_items.append(or_item)  
+        else:
+            if or_item in post_op_items: 
+                post_op_items.remove(or_item)     
+            
+st.title("OR Surgical Tool Tracker")
 
 if st.session_state.rerun == True:
     st.session_state.rerun = False
     st.experimental_rerun()
 
 else:
+    st.subheader("Pre-Op: ")
     item = st.text_input("Enter items brought into the OR (one at a time): ", value="")
     if st.button('Add Item'):
         if item != "":
-            or_items.append(item)
+            pre_op_items.append(item)
             st.session_state.mytsks.append(item)
             st.session_state.chkarr.append(False)
 
