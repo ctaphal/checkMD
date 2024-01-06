@@ -1,4 +1,4 @@
-# Welcome to checkMD, a tool to aid in minimizing physician errors!
+# Welcome to checkMD, a tool to minimize physician errors!
 
 **View final project at this link!**
 https://checkmd.streamlit.app/
